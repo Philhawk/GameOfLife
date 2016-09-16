@@ -29,6 +29,7 @@ var gameOfLife = {
   },
 
   newBoard: function () {
+    clearInterval(gameOfLife.stepInterval);
     var elements = document.getElementsByTagName('td');
 
     for(var i = 0; i < elements.length; i++){
@@ -38,6 +39,8 @@ var gameOfLife = {
   },
 
   randomGenerator: function () {
+    gameOfLife.newBoard();
+    clearInterval(gameOfLife.stepInterval);
     var elements = document.getElementsByTagName('td');
     var arr = ['dead','alive'];
     var aliveSquares = Math.ceil(elements.length * .2);
@@ -111,7 +114,7 @@ var gameOfLife = {
       return totalStatusCount;
     }
 
-    function checkNeighborStatus(e){
+    function checkNeighborStatus(){
       var nextStatus = [];
       for(var i = 0; i < elements.length; i++){
 
@@ -153,9 +156,9 @@ var gameOfLife = {
 
   },
 
+  
   enableAutoPlay: function () {
-
-    setInterval(gameOfLife.step, 400);
+    gameOfLife.stepInterval = setInterval(gameOfLife.step, 200);
 
   }
 
