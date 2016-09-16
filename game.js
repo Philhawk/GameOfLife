@@ -50,6 +50,9 @@ var gameOfLife = {
       elements[aliveCell].className = 'alive';
     }
   },
+  pauseGame: function(){
+    clearInterval(gameOfLife.stepInterval);
+  },
 
   setupBoardEvents: function() {
 
@@ -168,8 +171,10 @@ var gameOfLife = {
   var clearButton = document.getElementById('clear_btn')
   var playButton = document.getElementById('play_btn')
   var randomButton = document.getElementById('reset_btn')
+  var pauseButton = document.getElementById('pause_btn')
 
   playButton.addEventListener('click', gameOfLife.enableAutoPlay);
+  pauseButton.addEventListener('click', gameOfLife.pauseGame);
   stepButton.addEventListener('click', gameOfLife.step)
   clearButton.addEventListener('click', gameOfLife.newBoard)
   randomButton.addEventListener('click', gameOfLife.randomGenerator)
